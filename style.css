@@ -1,36 +1,392 @@
-/* Style global du corps de la page */
+
+/* =========================
+   1. CONFIGURATION GÉNÉRALE
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --vert: #075653;
+    --vert-fonce: #063d3b;
+    --corail: #ffaaa5;
+    --blanc: #ffffff;
+    --texte: #425454;
+    --fond: #f5f8f6;
+}
+
 body {
- background-color: #007471;
- font-family: 'Helvetica', sans-serif;
- margin: 40px;
- color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: var(--fond);
+    color: var(--texte);
+    line-height: 1.8;
 }
-/* Style des titres principaux */
-h1 {
- font-size: 32px;
- text-align: center;
- color: #de7471;
- border-bottom: 2px solid #de7471;
- padding-bottom: 10px;
+
+/* =========================
+   2. NAVIGATION
+========================= */
+
+.header {
+    background: var(--vert-fonce);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-/* Style des sous-titres */
-h2 {
- font-size: 24px;
- color: #de7471;
- margin-top: 30px;
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-/* Style des paragraphes */
-p {
- font-size: 18px;text-align: left;
- line-height: 1.6;
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
 }
-/* Style des liens */
-a {
- color: #de7471;
- font-weight: bold;
- text-decoration: none;
+
+.logo span,
+.footer span {
+    color: var(--corail);
 }
-/* Style au survol du curseur sur les liens */
-a:hover {
- text-decoration: underline;
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--corail);
+}
+
+/* =========================
+   3. BANNIÈRE PRINCIPALE
+========================= */
+
+.hero {
+    min-height: 580px;
+    background:
+        linear-gradient(
+            rgba(3, 40, 39, 0.55),
+            rgba(3, 40, 39, 0.65)
+        ),
+        url("./image/gouraya.jpg") center/cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: apparition 1s ease;
+}
+
+.surtitle,
+.section-label {
+    color: #d87570;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.hero .surtitle {
+    color: var(--corail);
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 1.2;
+    margin: 20px 0;
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 19px;
+    margin-bottom: 35px;
+    color: white;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--corail);
+    color: var(--vert-fonce);
+    padding: 13px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-4px);
+}
+
+/* =========================
+   4. INTRODUCTION
+========================= */
+
+.introduction {
+    max-width: 950px;
+    margin: auto;
+    padding: 100px 25px;
+    text-align: center;
+}
+
+.introduction h2,
+.section-heading h2 {
+    color: var(--vert);
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.3;
+    margin: 15px 0 25px;
+}
+
+.introduction p {
+    font-size: 17px;
+    line-height: 2;
+    color: var(--texte);
+}
+
+/* =========================
+   5. SECTIONS
+========================= */
+
+.section {
+    padding: 80px 7%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.section-heading {
+    max-width: 800px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.section-heading p {
+    font-size: 16px;
+}
+
+/* =========================
+   6. GALERIE HISTORIQUE
+========================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: 0.4s ease;
+}
+
+.gallery img:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   7. CARTES DES LIEUX
+========================= */
+
+.nature {
+    background: #eaf2ef;
+    max-width: 100%;
+}
+
+.places {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.place-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+    transition: 0.4s ease;
+}
+
+.place-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.13);
+}
+
+.place-image {
+    height: 270px;
+    overflow: hidden;
+}
+
+.place-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+/* Ajustement photo du Pic des Singes */
+.place-card:first-child .place-image img {
+    object-position: center top;
+}
+.place-card:hover img {
+    transform: scale(1.06);
+}
+
+.place-content {
+    padding: 28px;
+}
+
+.place-number {
+    font-size: 11px;
+    color: #d87570;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.place-content h3 {
+    color: var(--vert);
+    font-size: 23px;
+    margin: 10px 0;
+}
+
+.place-content p {
+    font-size: 15px;
+    color: var(--texte);
+}
+
+/* =========================
+   8. PIED DE PAGE
+========================= */
+
+.footer {
+    background: var(--vert-fonce);
+    color: white;
+    text-align: center;
+    padding: 55px 20px 25px;
+}
+
+.footer h2 {
+    font-size: 30px;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.footer p {
+    margin: 12px 0;
+}
+
+.footer a {
+    display: inline-block;
+    margin: 15px 0;
+    color: var(--corail);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 20px;
+    margin-top: 25px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* =========================
+   9. ANIMATION
+========================= */
+
+@keyframes apparition {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   10. VERSION MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 450px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .introduction {
+        padding: 65px 25px;
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery img {
+        height: 250px;
+    }
+
+    .places {
+        grid-template-columns: 1fr;
+    }
+
+    .place-image {
+        height: 230px;
+    }
 }
